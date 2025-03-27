@@ -10,7 +10,7 @@ class QuestionsSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: 400,
       child: SingleChildScrollView(
         child: Column(
           children:
@@ -76,58 +76,64 @@ class StyledSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     Color colorInUse;
 
-    final Color colorCorrect = const Color.fromARGB(255, 153, 178, 251);
-    final Color colorFalse = const Color.fromARGB(255, 201, 153, 251);
+    final Color colorCorrect = const Color.fromARGB(255, 150, 198, 241);
+    final Color colorFalse = const Color.fromARGB(255, 249, 133, 241);
     if (userAnswer == correctAnswer) {
       colorInUse = colorCorrect;
     } else {
       colorInUse = colorFalse;
     }
 
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          width: 30,
-          height: 30,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: colorInUse,
-            borderRadius: BorderRadius.circular(100),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: 30,
+            height: 30,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: colorInUse,
+              borderRadius: BorderRadius.circular(100),
+            ),
+            margin: EdgeInsets.only(right: 16),
+            child: Text(questionIndex),
           ),
-          margin: EdgeInsets.only(right: 16),
-          child: Text(questionIndex),
-        ),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                question,
-                style: GoogleFonts.lato(
-                  color: colorInUse,
-                  fontWeight: FontWeight.bold,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  question,
+                  style: GoogleFonts.lato(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
                 ),
-              ),
-              SizedBox(height: 5),
-              Text(
-                userAnswer,
-                style: GoogleFonts.lato(
-                  color: colorFalse,
-                  fontWeight: FontWeight.bold,
+                SizedBox(height: 5),
+                Text(
+                  userAnswer,
+                  style: GoogleFonts.lato(
+                    color: colorFalse,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
                 ),
-              ),
-              Text(
-                correctAnswer,
-                style: GoogleFonts.lato(
-                  color: colorCorrect,
-                  fontWeight: FontWeight.bold,
+                Text(
+                  correctAnswer,
+                  style: GoogleFonts.lato(
+                    color: colorCorrect,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
